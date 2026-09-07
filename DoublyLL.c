@@ -28,6 +28,40 @@
          tail=newnode;
      }
  }
+void PrintList()
+{
+    temp=head;
+    printf("Linked List:");
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+        count++;
+    }
+    printf("\n");
+    
+}
+void InsertAtBeg()
+{
+    struct Node*newnode;
+    newnode=malloc(sizeof(struct Node));
+    printf("Enter the data u want insert at the beginning:");
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    newnode->prev=NULL;
+    if(head==NULL)
+    {
+        head=tail=newnode;
+    }
+    else
+    {
+        head->prev=newnode;
+        newnode->next=head;
+        head=newnode;
+    }
+    PrintList();
+}
+
 int main(){
     int choice=1;
     while(choice!=0)
@@ -40,19 +74,9 @@ int main(){
     scanf("%d",&choice);
     }
     PrintList();
+    InsertAtBeg();
+
     return 0;
 
-}
-void PrintList()
-{
-    temp=head;
-    printf("Linked List:");
-    while(temp!=NULL)
-    {
-        printf("%d ",temp->data);
-        temp=temp->next;
-        count++;
-    }
-    printf("\n");
-    printf("%d\n",count);
+
 }
