@@ -1,0 +1,195 @@
+#include<stdio.h>
+#include<stdlib.h>
+  struct Node
+ {
+     int data;
+     struct Node*next;
+
+ };
+ struct Node*head=NULL;
+ struct Node*tail=NULL;
+ struct Node*temp=NULL;
+ int count=0;
+void CreateNode(int value){
+
+    struct Node*newNode;
+    newNode=malloc(sizeof(struct Node));
+    newNode->data=value;
+    newNode->next=NULL;
+    if(head==NULL)
+    {
+        head=temp=newNode;
+    }
+    else
+    {
+        temp->next=newNode;
+        temp=newNode;
+    }
+
+}
+void PrintList()
+{
+    temp=head;
+    printf("Linked List:");
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+        count++;
+    }
+    printf("\n");
+    printf("%d\n",count);
+}
+int main(){
+    int choice=1;
+    while(choice!=0)
+    {
+    int data;
+    int count=0;
+    printf("enter the data:");
+    scanf("%d",&data);
+    CreateNode(data);
+    printf("do you want to continue?(1/0):");
+    scanf("%d",&choice);
+
+    }
+    PrintList();
+    DeleteAtPos();
+    PrintList();
+    return 0;
+
+}
+
+void InsertAtBeg()
+{
+    struct Node*newNode;
+    newNode=malloc(sizeof(struct Node));
+    printf("Enter the data u want to insert at beginning:");
+    scanf("%d",&newNode->data);
+    newNode->next=head;
+    head=newNode;
+}
+void InsertAtEnd()
+{
+    struct Node*newNode;
+    newNode=malloc(sizeof(struct Node));
+    printf("Enter the data u want to insert at end:");
+    scanf("%d",&newNode->data);
+    newNode->next=NULL;
+    temp=head;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=newNode;
+}
+void InsertAtPos()
+{
+    int pos,i=1;
+    printf("enter the position do u want to insert a value:");
+    scanf("%d",&pos);
+    if(pos>count)
+    {
+        printf("invalid position");
+    }
+    else if(pos==1)
+    {
+        InsertAtBeg();
+    }
+    else if(pos==count+1)
+    {
+        InsertAtEnd();
+    }
+    else
+    {
+        struct Node*newNode;
+    newNode=malloc(sizeof(struct Node));
+    printf("Enter the data u want to insert at the position:");
+    scanf("%d",&newNode->data);
+        temp=head;
+        while(i<pos-1)
+        {
+            temp=temp->next;
+            i++;
+        }
+        newNode->next=temp->next;
+        temp->next=newNode;
+    }
+}
+void DeleteAtBeg()
+{
+    if(head==NULL)
+    {
+        printf("No data");
+    }
+    else
+    {
+    temp=head;
+    head=temp->next;
+    free(temp);
+    }
+}
+void DeleteAtEnd()
+{
+    struct Node*prevNode;
+    temp=head;
+    while(temp->next!=NULL)
+    {
+        prevNode=temp;
+        temp=temp->next;
+    }
+    if(temp==head)
+    {
+        head=0;
+        free(temp);
+    }
+    else
+    {
+        prevNode->next=NULL;
+        free(temp);
+    }
+}
+void DeleteAtPos()
+{
+    int pos,i=1;
+    struct Node*nextNode;
+    temp=head;
+    printf("enter position u want to delete:");
+    scanf("%d",&pos);
+     if(pos>count)
+    {
+        printf("invalid position");
+    }
+    else if(pos==1)
+    {
+        DeleteAtBeg();
+    }
+    else if(pos==count)
+    {
+        DeleteAtEnd();
+    }
+    else{
+     while(i<pos-1)
+     {
+        temp=temp->next;
+        i++;
+     }
+    }
+    nextNode=temp->next;
+    temp->next=nextNode->next;
+    free(nextNode);
+}
+void Reversed()
+{
+    struct Node*prevNode,*nextNode,*currentNode;
+    prevNode=0;
+    currentNode=nextNode=head;
+    while(nextNode!=NULL)
+    {
+        nextNode=nextNode->next;
+        currentNode->next=prevNode;
+        prevNode=currentNode;
+        currentNode=nextNode;
+    }
+    head=prevNode;
+}
