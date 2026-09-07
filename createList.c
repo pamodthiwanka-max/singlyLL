@@ -40,25 +40,6 @@ void PrintList()
     printf("\n");
     printf("%d\n",count);
 }
-int main(){
-    int choice=1;
-    while(choice!=0)
-    {
-    int data;
-    int count=0;
-    printf("enter the data:");
-    scanf("%d",&data);
-    CreateNode(data);
-    printf("do you want to continue?(1/0):");
-    scanf("%d",&choice);
-
-    }
-    PrintList();
-    DeleteAtPos();
-    PrintList();
-    return 0;
-
-}
 
 void InsertAtBeg()
 {
@@ -192,4 +173,26 @@ void Reversed()
         currentNode=nextNode;
     }
     head=prevNode;
+}
+
+int main(){
+    int choice=1;
+    while(choice!=0)
+    {
+    int data;
+    int count=0;
+    printf("enter the data:");
+    scanf("%d",&data);
+    CreateNode(data);
+    printf("do you want to continue?(1/0):");
+    scanf("%d",&choice);
+
+
+    }
+    PrintList();
+    DeleteAtPos();
+    PrintList();
+    return 0;
+
+
 }
