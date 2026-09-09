@@ -9,7 +9,7 @@ void traverse(int marks[], int *size)//print the marks array case1
     }
 }
 
-void searchByValue(int marks[], int *size, int value)// search the marks array by value case2
+void searchByValue(int marks[], int *size, int value)// search the marks array by value 
 {
     int found=0;
     for (int i = 0; i < *size; i++)
