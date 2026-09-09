@@ -27,6 +27,7 @@ void CreateNode(int value){
     }
 
 }
+// print the linked list
 void PrintList()
 {
     temp=head;
@@ -40,7 +41,7 @@ void PrintList()
     printf("\n");
     printf("%d\n",count);
 }
-
+//insert the node at the beginning of the linked list
 void InsertAtBeg()
 {
     struct Node*newNode;
@@ -50,6 +51,8 @@ void InsertAtBeg()
     newNode->next=head;
     head=newNode;
 }
+
+// insert the node at the end of the linked list
 void InsertAtEnd()
 {
     struct Node*newNode;
@@ -64,6 +67,8 @@ void InsertAtEnd()
     }
     temp->next=newNode;
 }
+
+//insert the node at the given position of the linked list
 void InsertAtPos()
 {
     int pos,i=1;
@@ -97,6 +102,10 @@ void InsertAtPos()
         temp->next=newNode;
     }
 }
+
+
+
+// delete the node at the end of the linked list
 void DeleteAtBeg()
 {
     if(head==NULL)
@@ -110,6 +119,10 @@ void DeleteAtBeg()
     free(temp);
     }
 }
+
+
+
+// delete the node at the end of the linked list
 void DeleteAtEnd()
 {
     struct Node*prevNode;
@@ -130,6 +143,8 @@ void DeleteAtEnd()
         free(temp);
     }
 }
+
+//delete the node at the given position of the linked list
 void DeleteAtPos()
 {
     int pos,i=1;
@@ -175,6 +190,7 @@ void Reversed()
     head=prevNode;
 }
 
+//main function
 int main(){
     int choice=1;
     while(choice!=0)
