@@ -193,6 +193,8 @@ void Reversed()
 //main function
 int main(){
     int choice=1;
+    int choose;
+    int con;
     while(choice!=0)
     {
     int data;
@@ -202,12 +204,62 @@ int main(){
     CreateNode(data);
     printf("do you want to continue?(1/0):");
     scanf("%d",&choice);
-
-
     }
-    PrintList();
-    DeleteAtPos();
-    PrintList();
+
+    
+    while(choose!=0)
+    {
+        printf("\n1.print the linked list");
+        printf("\n2.insert the node at the beginning of the linked list");
+        printf("\n3.insert the node at the end of the linked list");
+        printf("\n4.insert the node at the given position of the linked list");
+        printf("\n5.delete the node at the beginning of the linked list");
+        printf("\n6.delete the node at the end of the linked list");
+        printf("\n7.delete the node at the given position of the linked list");
+        printf("\n8.reverse the linked list");
+        printf("\nenter your choose:");
+        scanf("%d",&choose);
+    
+    switch(choose)
+    {
+        case 1:
+            PrintList();
+            break;
+        case 2:
+            InsertAtBeg();
+            PrintList();
+            break;
+        case 3:
+            InsertAtEnd();
+            PrintList();
+            break;
+        case 4:
+            InsertAtPos();
+            PrintList();
+            break;
+        case 5:
+            DeleteAtBeg();
+            PrintList();
+            break;
+        case 6:
+            DeleteAtEnd();
+            PrintList();
+            break;
+        case 7:
+            DeleteAtPos();
+            PrintList();
+            break;
+        case 8:
+            Reversed();
+            PrintList();
+            break;
+        default:
+            printf("invalid choose");
+    } 
+    printf("do you want to continue?(1/0):");
+    scanf("%d",&con);
+
+}  
     return 0;
 
 
