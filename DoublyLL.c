@@ -94,14 +94,140 @@ void InsertAtEnd()  //insert a data to the end
        newnode->prev=tail;
        tail=newnode;
    }
-   PrintList();
+   
 }
 
+void InsertAtPos(){  //insert to the any position
+    int pos,i=1;
+    printf("enter the position u want to insert the data:");
+    scanf("%d",&pos);
+    if(pos>getlength()||pos<1){
+        printf("Invalid position");
+    }
+    else if(pos==1)
+            {
+                InsertAtBeg();
+                
+            }
+    else if(pos==getlength())
+            {
+                InsertAtEnd();
+                
+            }
+    else{
+                struct Node*newnode;
+                temp=head;
+                newnode=malloc(sizeof(struct Node));
+                printf("enter the value u want to insert at the pos:");
+                scanf("%d",&newnode->data);
+                newnode->next=NULL;
+                newnode->prev=NULL;
+                if(head==NULL)
+                {
+                    head=tail=newnode;
+                }
+                else{
+                    while(i<pos-1){
+                        temp=temp->next;
+                        i++;
+                    }
+                    newnode->prev=temp;
+                    newnode->next=temp->next;
+                    temp->next=newnode;
+                    newnode->next->prev=newnode;
+                }
+                 
+    }
+
+    }
+
+
+void deleteatbeg(){  //delete from beginning
+    if(head==NULL)
+    {
+        printf("list is empty");
+    }
+    else{
+        temp=head;
+        head=head->next;
+        head->prev=0;
+        free(temp);
+    }
+    
+}
+
+void deleteatend(){  //delete from end
+    if(tail==NULL){
+        printf("list is empty");
+    }
+    else{
+        temp=tail;
+        tail=tail->prev;
+        tail->next=0;
+        free(temp);
+    }
+    
+}
+
+
+void deleteatpos(){
+    int pos,i=1;
+    printf("enter the position u want to delete:");
+    scanf("%d",&pos);
+    if(pos>getlength()||pos<1){
+        printf("invalid position");
+    }
+    else if(pos==1){
+        deleteatbeg();
+        
+    }
+    else if(pos==getlength()){
+        deleteatend();
+        
+    }
+    else{
+        temp=head;
+        while(i<pos){
+            temp=temp->next;
+            i++;
+        }
+            temp->prev->next=temp->next;
+            temp->next->prev=temp->prev;
+            free(temp);
+        
+        
+    
+
+    }
+}
+
+
+void reverse(){  //reverse the linked list
+    struct Node *current,*nextnode;
+    if(head==NULL){
+        printf("list is empty");
+    }
+    else{
+        current=head;
+        while(current!=0){
+            nextnode=current->next;
+            current->next=current->prev;
+            current->prev=nextnode;
+            current=nextnode;
+        }
+        current=head;
+        head=tail;
+        tail=current;
+    }
+    
+}
+
+
  
-
-
 int main(){
     int choice=1;
+    int con=1;
+    int choose;
     while(choice!=0)
     {
     int data;
@@ -111,10 +237,112 @@ int main(){
     printf("do you want to continue?(1/0):");
     scanf("%d",&choice);
     }
-    PrintList();
-    InsertAtEnd();
+     while(con!=0)
+ {
+     printf("\n1.print the linked list");
+     printf("\n2.insert the node at the beginning of the linked list");
+     printf("\n3.insert the node at the end of the linked list");
+     printf("\n4.insert the node at the given position of the linked list");
+     printf("\n5.delete the node at the beginning of the linked list");
+     printf("\n6.delete the node at the end of the linked list");
+     printf("\n7.delete the node at the given position of the linked list");
+     printf("\n8.reverse the linked list");
+     printf("\n9.exit");
+     printf("\nenter your choose:");
+     scanf("%d",&choose);
+ 
+ switch(choose)
+ {
+     case 1:
+         PrintList();
+         break;
+     case 2:
+         InsertAtBeg();
+         PrintList();
+         break;
+     case 3:
+         InsertAtEnd();
+         PrintList();
+         break;
+     case 4:
+         InsertAtPos();
+         PrintList();
+         break;
+     case 5:
+         deleteatbeg();
+         PrintList();
+         break;
+     case 6:
+         deleteatend();
+         PrintList();
+         break;
+     case 7:
+         deleteatpos();
+         PrintList();
+         break;
+     case 8:
+         reverse();
+         PrintList();
+         break;
+     case 9:
+         printf(" you are exit from the linked list");
+         break;
+     default:
+         printf("invalid choose");
+ } 
+ printf("do you want to continue?(1/0):");
+ scanf("%d",&con);
+}  
 
-    return 0;
-
-
+ return 0;
 }
+    
+ 
+    
+     
+
+
+
+
+
+    
+    
+    
+    
+ 
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
