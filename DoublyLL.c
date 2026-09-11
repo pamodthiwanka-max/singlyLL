@@ -10,8 +10,8 @@
  struct Node*head=NULL;
  struct Node*tail=NULL;
  struct Node*temp=NULL;
- int count=0;
- void CreateNode(int value)
+
+ void CreateNode(int value)  //create a linked list
  {
      struct Node*newnode;
      newnode=malloc(sizeof(struct Node));
@@ -29,7 +29,8 @@
          tail=newnode;
      }
  }
-void PrintList()
+
+void PrintList()  //print the linked list
 {
     temp=head;
     printf("Linked List:");
@@ -37,12 +38,12 @@ void PrintList()
     {
         printf("%d ",temp->data);
         temp=temp->next;
-        count++;
     }
     printf("\n");
-    
 }
-void InsertAtBeg()
+
+
+void InsertAtBeg()  //insert a data to the beginning
 {
     struct Node*newnode;
     newnode=malloc(sizeof(struct Node));
@@ -63,6 +64,42 @@ void InsertAtBeg()
     PrintList();
 }
 
+int getlength(){  //count the length of the linked list
+    int count=0;
+    temp=head;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    return count;
+}
+
+void InsertAtEnd()  //insert a data to the end
+{
+
+   struct Node*newnode;
+   newnode=malloc(sizeof(struct Node));
+   printf("Enter the data u want insert at the beginning:");
+   scanf("%d",&newnode->data);
+   newnode->next=NULL;
+   newnode->prev=NULL;
+   if(head==NULL)
+   {
+       head=tail=newnode;
+   }
+   else
+   {
+       tail->next=newnode;
+       newnode->prev=tail;
+       tail=newnode;
+   }
+   PrintList();
+}
+
+ 
+
+
 int main(){
     int choice=1;
     while(choice!=0)
@@ -75,7 +112,7 @@ int main(){
     scanf("%d",&choice);
     }
     PrintList();
-    InsertAtBeg();
+    InsertAtEnd();
 
     return 0;
 
