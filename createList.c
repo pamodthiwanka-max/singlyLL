@@ -41,6 +41,18 @@ void PrintList()
     printf("\n");
     printf("%d\n",count);
 }
+
+int getlength()
+{
+    int count=0;
+    temp=head;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    return count;
+}
 //insert the node at the beginning of the linked list
 void InsertAtBeg()
 {
@@ -74,7 +86,7 @@ void InsertAtPos()
     int pos,i=1;
     printf("enter the position do u want to insert a value:");
     scanf("%d",&pos);
-    if(pos>count)
+    if(pos>getlength())
     {
         printf("invalid position");
     }
@@ -82,7 +94,7 @@ void InsertAtPos()
     {
         InsertAtBeg();
     }
-    else if(pos==count+1)
+    else if(pos==getlength()+1)
     {
         InsertAtEnd();
     }
@@ -152,7 +164,7 @@ void DeleteAtPos()
     temp=head;
     printf("enter position u want to delete:");
     scanf("%d",&pos);
-     if(pos>count)
+     if(pos>getlength())
     {
         printf("invalid position");
     }
@@ -160,7 +172,7 @@ void DeleteAtPos()
     {
         DeleteAtBeg();
     }
-    else if(pos==count)
+    else if(pos==getlength())
     {
         DeleteAtEnd();
     }
@@ -190,6 +202,7 @@ void Reversed()
     head=prevNode;
 }
 
+
 //main function
 int main(){
     int choice=1;
@@ -207,7 +220,7 @@ int main(){
     }
 
     
-    while(choose!=0)
+    while(con!=0)
     {
         printf("\n1.print the linked list");
         printf("\n2.insert the node at the beginning of the linked list");
@@ -217,6 +230,7 @@ int main(){
         printf("\n6.delete the node at the end of the linked list");
         printf("\n7.delete the node at the given position of the linked list");
         printf("\n8.reverse the linked list");
+        printf("\n9.exit");
         printf("\nenter your choose:");
         scanf("%d",&choose);
     
@@ -252,6 +266,9 @@ int main(){
         case 8:
             Reversed();
             PrintList();
+            break;
+        case 9:
+            printf(" you are exit from the linked list");
             break;
         default:
             printf("invalid choose");
