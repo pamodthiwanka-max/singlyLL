@@ -23,6 +23,8 @@ Currently implemented:
 
 * [x] Linked List
 * [x] Doubly Linked List
+* [x] Circular Linked List
+* [x] Circular doubly Linked List
 * [ ] Queue
 * [ ] Stack
 * [ ] Circular Linked List
