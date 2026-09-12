@@ -1,4 +1,4 @@
-
+//DOUBLY LINKED LIST
 #include<stdio.h>
 #include<stdlib.h>
   struct Node
@@ -80,7 +80,7 @@ void InsertAtEnd()  //insert a data to the end
 
    struct Node*newnode;
    newnode=malloc(sizeof(struct Node));
-   printf("Enter the data u want insert at the beginning:");
+   printf("Enter the data u want insert at the end:");
    scanf("%d",&newnode->data);
    newnode->next=NULL;
    newnode->prev=NULL;
@@ -107,11 +107,6 @@ void InsertAtPos(){  //insert to the any position
     else if(pos==1)
             {
                 InsertAtBeg();
-                
-            }
-    else if(pos==getlength())
-            {
-                InsertAtEnd();
                 
             }
     else{
@@ -170,7 +165,7 @@ void deleteatend(){  //delete from end
 }
 
 
-void deleteatpos(){
+void deleteatpos(){  //delete data from any position
     int pos,i=1;
     printf("enter the position u want to delete:");
     scanf("%d",&pos);
